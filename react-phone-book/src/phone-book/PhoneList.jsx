@@ -7,6 +7,7 @@ const PhoneList = ({ phoneBook }) => {
   const phoneItems = phoneBook.map((phone) => {
     return (
       <tr>
+        <td>{phone.id}</td>
         <td>{phone.name}</td>
         <td>{phone.number}</td>
       </tr>
@@ -16,6 +17,7 @@ const PhoneList = ({ phoneBook }) => {
   return (
     <table>
       <tr>
+        <th>ID</th>
         <th>이름</th>
         <th>전화번호</th>
       </tr>
