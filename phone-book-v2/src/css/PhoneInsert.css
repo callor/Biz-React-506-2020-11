@@ -24,3 +24,7 @@ form.phoneInsert button {
   color: white;
   border-radius: 8px;
 }
+
+form.phoneInsert button:hover {
+  box-shadow: 3px 3px 3px rgba(200, 200, 200, 0.6);
+}
