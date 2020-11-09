@@ -1,0 +1,19 @@
+table.phoneList {
+  width: 50%;
+  margin: 10px auto;
+  border: none;
+  border-collapse: collapse;
+  font-size: 1.3rem;
+}
+
+table.phoneList td,
+table.phoneList th {
+  border: 1px solid #777;
+  padding: 8px;
+  cursor: pointer;
+}
+
+table.phoneList th {
+  background-color: #666;
+  color: yellowgreen;
+}

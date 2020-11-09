@@ -1,0 +1,26 @@
+form.phoneInsert {
+  border: 1px solid yellowgreen;
+  margin: 0px auto;
+  padding: 5px;
+  border-radius: 10px;
+  width: 50%;
+}
+
+form.phoneInsert input {
+  padding: 10px;
+  margin: 5px;
+  display: inline-block;
+  width: 40%;
+  font-size: 1rem;
+  outline: none;
+}
+
+form.phoneInsert button {
+  display: inline-block;
+  padding: 12px 25px;
+  border: none;
+  font-weight: bold;
+  background-color: blue;
+  color: white;
+  border-radius: 8px;
+}
