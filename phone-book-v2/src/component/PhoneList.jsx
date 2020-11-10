@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import "../css/PhoneList.css";
 
 const PhoneList = ({ phoneBooks, deletePhoneBooks, editableBooks }) => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-
+  /**
+   * Hook 함수
+   * use*로 시작되는 함수들(useState,useRef, useEffect, useReducer)
+   *
+   * state 변수가 여러개일때는 useState를 사용하지 않고 useReducer를 사용한다
+   *
+   *
+   */
+  // const [name,setName] = useState("")
+  // const [number,setNumber] = useState("")
+  const reducer = (object, action) => {
+    return { ...object, [action.name]: action.value };
+  };
+  const [state, dispatch] = useReducer(reducer, { name: "", number: "" });
+  const { name, number } = state;
   /**
    * tr tag를 클릭했을때 사용할 event 핸들러
    * tr tag를 클릭을 했지만 우리가 사용할 것은 td tag가 목적이므로
    * e.target.className 속성을 사용하여 어떤 td 가 클릭됬는지 확인하자
-   *
    */
   const trOnClick = (e) => {
     console.log(e.target.className);
@@ -34,12 +45,8 @@ const PhoneList = ({ phoneBooks, deletePhoneBooks, editableBooks }) => {
     editableBooks(id);
   };
 
-  const onNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const onNumberChange = (e) => {
-    setNumber(e.target.value);
+  const onChange = (e) => {
+    dispatch(e.target);
   };
 
   /**
@@ -54,8 +61,8 @@ const PhoneList = ({ phoneBooks, deletePhoneBooks, editableBooks }) => {
   const phoneList = phoneBooks.map((phone, index) => {
     if (phone.isEdit) {
       console.log(phone.name);
-      setName(phone.name);
-      setNumber(phone.number);
+      state.name = phone.name;
+      state.number = phone.number;
 
       return (
         <tr
@@ -66,10 +73,10 @@ const PhoneList = ({ phoneBooks, deletePhoneBooks, editableBooks }) => {
         >
           <td>{index + 1}</td>
           <td>
-            <input value={name} onChange={onNameChange} />
+            <input value={name} name="name" onChange={onChange} />
           </td>
           <td>
-            <input value={number} onChange={onNumberChange} />
+            <input value={number} name="number" onChange={onChange} />
           </td>
           <td className="update-ok">&#10003;</td>
         </tr>
