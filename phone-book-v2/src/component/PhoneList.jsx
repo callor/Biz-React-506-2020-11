@@ -1,7 +1,12 @@
 import React, { useReducer, useState } from "react";
 import "../css/PhoneList.css";
 
-const PhoneList = ({ phoneBooks, deletePhoneBooks, editableBooks }) => {
+const PhoneList = ({
+  phoneBooks,
+  deletePhoneBooks,
+  editableBooks,
+  updateBooks,
+}) => {
   /**
    * Hook 함수
    * use*로 시작되는 함수들(useState,useRef, useEffect, useReducer)
@@ -26,17 +31,22 @@ const PhoneList = ({ phoneBooks, deletePhoneBooks, editableBooks }) => {
     console.log(e.target.className);
     const className = e.target.className;
     const closest = e.target.closest("TR");
-    const name = closest.dataset.name; // data-name으로 설정된 값 가져오기
+    const data_name = closest.dataset.name; // data-name으로 설정된 값 가져오기
     const id = closest.dataset.id; // data-id로 설정된 값 가져오기
 
-    console.log(name, id);
+    console.log(data_name, id);
 
     if (className === "delete") {
-      if (window.confirm(name + "을 정말 삭제합니다!!!")) {
+      if (window.confirm(data_name + "을 정말 삭제합니다!!!")) {
         // alert(name + "데이터 삭제");
         deletePhoneBooks(id);
         return false;
       }
+    }
+    if (className === "update-ok") {
+      console.log("update");
+      updateBooks(id, name, number);
+      return false;
     }
 
     console.log("go Edit");
