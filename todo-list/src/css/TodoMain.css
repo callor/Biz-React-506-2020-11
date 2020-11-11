@@ -1,0 +1,14 @@
+main.todo-main {
+  background-color: white;
+  width: 520px;
+  margin: 4rem auto;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+main.todo-main h3 {
+  padding: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+  background-color: #22b8cf;
+  color: white;
+}
