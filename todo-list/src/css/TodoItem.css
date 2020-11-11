@@ -24,3 +24,27 @@ div.checked {
   text-decoration: line-through;
   color: #abd5bd;
 }
+/* 
+word-break 
+
+break-all
+문자열이 영문일 경우 어떻게 줄바꿈을 할래
+한글일 경우는 한글자 단위로 줄바꿈을 해도 좋다
+
+keep-all
+한글일경우 단어(공백)단위로 줄바꿈을 하라
+
+*/
+div.todo-text {
+  flex: 1;
+  word-break: break-all;
+  text-align: left;
+}
+
+div.check-mark {
+  font-size: 1.5rem;
+  line-height: 1rem;
+  margin-left: 1rem;
+  color: #3bc9db;
+  font-weight: 800;
+}
