@@ -180,5 +180,4 @@ class BucketMain extends Component {
     );
   }
 }
-
 export default BucketMain;
