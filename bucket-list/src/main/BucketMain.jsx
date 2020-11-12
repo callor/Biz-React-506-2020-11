@@ -29,7 +29,7 @@ class BucketMain extends Component {
         b_title: "제주도 여행가기",
         b_end_date: "2020-11-12",
         b_end_check: true,
-        b_cancel: false,
+        b_cancel: true,
       },
     ],
   };
@@ -58,6 +58,7 @@ class BucketMain extends Component {
     if (preString !== thisString) {
       localStorage.setItem("bucketList", thisString);
     }
+    console.log("update", this.state.bucketList);
   }
 
   // 현재 컴포넌트가 마운트 모두 마운트되고
@@ -110,6 +111,47 @@ class BucketMain extends Component {
     this.setState({ bucketList: flageBucketList });
   };
 
+  updateBucket = (id, title) => {
+    const updateBucketList = this.state.bucketList.map((bucket) => {
+      if (bucket.b_id === Number(id)) {
+        return {
+          ...bucket,
+          b_title: title,
+        };
+      } else {
+        return bucket;
+      }
+    });
+    this.setState({ bucketList: updateBucketList });
+  };
+
+  handleCancel = (id) => {
+    const cancelBucketList = this.state.bucketList.map((bucket) => {
+      if (bucket.b_id === Number(id)) {
+        console.log(bucket.b_cancel);
+        return { ...bucket, b_cancel: !bucket.b_cancel };
+      } else {
+        return bucket;
+      }
+    });
+    this.setState({ bucketList: cancelBucketList });
+  };
+
+  handleComplet = (id) => {
+    const date = Date();
+    const compBucketList = this.state.bucketList.map((bucket) => {
+      if (bucket.b_id === Number(id)) {
+        return {
+          ...bucket,
+          b_end_date: date.toString(),
+          b_end_check: !bucket.b_end_check,
+        };
+      } else {
+        return bucket;
+      }
+    });
+    this.setState({ bucketList: compBucketList });
+  };
   /**
    *
    * class Component에서 child Component에 state형 변수를 보낼때는
@@ -129,6 +171,9 @@ class BucketMain extends Component {
           <BucketList
             bucketList={this.state.bucketList}
             handleFlagClick={this.handleFlagClick}
+            updateBucket={this.updateBucket}
+            handleCancel={this.handleCancel}
+            handleComplet={this.handleComplet}
           />
         </p>
       </div>
