@@ -1,0 +1,11 @@
+npm install moment
+npm install mysql4
+npm install sequelize
+npm install syntax-error
+npm install express-session
+
+npm install express
+npm install ejs
+npm install http-errors
+npm install
+
