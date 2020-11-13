@@ -4,6 +4,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+// ./models/index.js 파일을 require하라
+const seqDB = require("./models").sequelize;
+seqDB.sync();
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const api = require("./routes/api");
