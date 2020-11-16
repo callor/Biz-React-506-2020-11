@@ -15,4 +15,4 @@ const BBsNav = () => {
   );
 };
 
-export default BBsN;
+export default BBsNav;
