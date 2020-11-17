@@ -23,6 +23,7 @@ class BBsItem extends Component {
         <td>{bbs.b_writer}</td>
 
         <td>
+          {bbs.b_date_time}
           <Moment format="YYYY-MM-DD HH:mm:ss">{bbs.b_date_time}</Moment>
         </td>
         <td

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../css/BBsInsert.css";
-import axios from "axios";
 
 class BBsInsert extends Component {
   state = {
@@ -21,20 +20,6 @@ class BBsInsert extends Component {
 
   handleOnChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
-  bbsSave = () => {
-    const { insertURL, updateURL } = this.props;
-    const url = this.state.isUpdate ? updateURL : insertURL;
-    axios
-      .post(url, {
-        b_id: this.state.b_id,
-        b_writer: this.state.b_writer,
-        b_subject: this.state.b_subject,
-        b_content: this.state.b_content,
-      })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
   };
 
   render() {

@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import BBsInsert from "./BBsInsert";
 import BBsList from "./BBsList";
 
-const BBS_INSERT_URL = "http://localhost:5000/api/insert";
-const BBS_UPDATE_URL = "http://localhost:5000/api/update";
-const BBS_FETCH_URL = "http://localhost:5000/api/bbsList";
-const BBS_FIND_BY_ID = "http://localhost:5000/api/view/";
+const BBS_INSERT_URL = "/api/insert";
+const BBS_UPDATE_URL = "/api/update";
+const BBS_FETCH_URL = "/api/bbsList";
+const BBS_FIND_BY_ID = "/api/view/";
 
 class BBsMain extends Component {
   timer = "";
@@ -33,7 +33,7 @@ class BBsMain extends Component {
     // setInterval(callback,time)
     // 최초에 callbak함수가 실행되고 이후에 time 만큼 경과하면
     // 또 callback함수를 계속해서 실행하라
-    this.timer = setInterval(() => this.fetchBBsList(), 5000);
+    // this.timer = setInterval(() => this.fetchBBsList(), 5000);
   }
 
   // react에서 setInterval()을 사용하여 어떤 함수를 실행하면
@@ -86,6 +86,7 @@ class BBsMain extends Component {
           insertURL={BBS_INSERT_URL}
           updateURL={BBS_UPDATE_URL}
           bbsData={this.state.bbsData}
+          fetchBBs={this.fetchBBsList}
         />
         <p>{this.state.isFetch ? "데이터가져오는중..." : "완료"}</p>
         <BBsList

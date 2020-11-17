@@ -7,7 +7,7 @@ class BBsList extends Component {
     const { bbsList, fetchBBs, handleUpdate } = this.props;
     const bbsItemList = bbsList.map((bbs, index) => (
       <BBsItem
-        key={bbs.id}
+        key={bbs.b_id}
         index={index}
         bbs={bbs}
         fetchBBs={fetchBBs}

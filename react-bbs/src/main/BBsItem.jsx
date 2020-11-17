@@ -18,7 +18,7 @@ class BBsItem extends Component {
   render() {
     const { index, bbs, handleUpdate } = this.props;
     return (
-      <tr>
+      <tr key={bbs.b_id}>
         <td>{index + 1}</td>
         <td>{bbs.b_writer}</td>
 
