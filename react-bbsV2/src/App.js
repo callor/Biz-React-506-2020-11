@@ -1,8 +1,8 @@
 import BackImg from "./Landscape.jpg";
 import "./App.css";
 import BBsMain from "./main/BBsMain";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
-// import BBsNav from "./main/BBsNav";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import BBsNav from "./main/BBsNav";
 
 function App() {
   const background = {
@@ -17,6 +17,7 @@ function App() {
         <h3>REACT BBS 2020</h3>
         <p>React로 구현하는 BBS Project</p>
       </header>
+      <BBsNav />
       <BBsMain />
       <footer className="footer">
         <address>CopyRigh &copy; callor@callor.com</address>

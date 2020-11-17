@@ -10,12 +10,10 @@ class BBsInsert extends Component {
     b_id: 0,
   };
 
-  componentDidMount() {
-    // if (this.props.bbsData.isUpdate) {
-    // this.state = this.props.bbsData;
-    this.setState({ ...this.props.bbsData });
-    console.log("update");
-    // }
+  componentDidUpdate(preProps, preState) {
+    if (this.props.bbsData.b_id !== this.state.b_id) {
+      this.setState({ ...this.props.bbsData });
+    }
   }
 
   handleOnChange = (e) => {
@@ -23,7 +21,11 @@ class BBsInsert extends Component {
   };
 
   render() {
-    const { b_writer, b_subject, b_content } = this.state;
+    const { bbsSave } = this.props;
+
+    const { state, handleOnChange } = this;
+    const { b_writer, b_subject, b_content } = state;
+
     return (
       <div className="input-form">
         <input
@@ -44,7 +46,7 @@ class BBsInsert extends Component {
           onChange={this.handleOnChange}
           placeholder="내용"
         />
-        <button onClick={this.bbsSave}>저장</button>
+        <button onClick={() => bbsSave(this.state)}>저장</button>
       </div>
     );
   }

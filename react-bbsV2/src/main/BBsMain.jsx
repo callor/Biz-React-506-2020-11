@@ -63,17 +63,22 @@ class BBsMain extends Component {
       .catch((err) => console.log(err));
   };
 
-  bbsSave = () => {
-    const { insertURL, updateURL } = this.props;
-    const url = this.state.isUpdate ? updateURL : insertURL;
+  bbsSave = (bbsData) => {
+    const { b_id, b_writer, b_subject, b_content, isUpdate } = bbsData;
+    const url = isUpdate ? BBS_UPDATE_URL : BBS_INSERT_URL;
+    const b_date_time = isUpdate ? bbsData.b_date_time : Date().toString();
     axios
       .post(url, {
-        b_id: this.state.b_id,
-        b_writer: this.state.b_writer,
-        b_subject: this.state.b_subject,
-        b_content: this.state.b_content,
+        b_id: b_id,
+        b_writer: b_writer,
+        b_subject: b_subject,
+        b_content: b_content,
+        b_date_time: b_date_time,
       })
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+        this.fetchBBsList();
+      })
       .catch((err) => console.log(err));
   };
 
@@ -92,15 +97,16 @@ class BBsMain extends Component {
   };
 
   render() {
-    const { bbsList, bbsData } = this.state;
+    const { state, bbsSave, fetchBBsList, handleUpdate } = this;
+    const { bbsList, bbsData, isFetch } = state;
     return (
       <div>
         <BBsInsert bbsSave={bbsSave} bbsData={bbsData} />
-        <p>{this.state.isFetch ? "데이터가져오는중..." : "완료"}</p>
+        <p>{isFetch ? "데이터가져오는중..." : "완료"}</p>
         <BBsList
           bbsList={bbsList}
-          fetchBBs={this.fetchBBsList}
-          handleUpdate={this.handleUpdate}
+          fetchBBs={fetchBBsList}
+          handleUpdate={handleUpdate}
         />
       </div>
     );

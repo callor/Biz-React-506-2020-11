@@ -78,6 +78,7 @@ router.get("/view/:id", (req, res) => {
 
 router.post("/update", (req, res) => {
   // const b_id = req.params.id;
+  console.log("Update", req.body);
   bbsDao
     .update(
       {
