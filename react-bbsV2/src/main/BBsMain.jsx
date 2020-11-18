@@ -33,6 +33,7 @@ class BBsMain extends Component {
     // 최초에 callbak함수가 실행되고 이후에 time 만큼 경과하면
     // 또 callback함수를 계속해서 실행하라
     // this.timer = setInterval(() => this.fetchBBsList(), 5000);
+    console.log("DidMount");
   }
 
   // react에서 setInterval()을 사용하여 어떤 함수를 실행하면
@@ -45,6 +46,11 @@ class BBsMain extends Component {
   // JS 에 표준으로 내장된 ajax method
   fetchBBsList = () => {
     this.setState({ ...this.state, isFetch: true });
+    // axios.get(BBS_FETCH_URL).then((result) => {
+    // console.log(result);
+    // this.setState({ bbsList: result.data });
+    // });
+
     fetch(BBS_FETCH_URL)
       .then((res) => {
         // response 객체가 통째로 수신된 상태
@@ -53,6 +59,7 @@ class BBsMain extends Component {
         return res.json();
       })
       .then((result) => {
+        console.log(result);
         // 앞의 then()에서 return한 데이터를 result변수에 받고
         // bbsList에 데이터를 적용
         this.setState({

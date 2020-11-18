@@ -103,7 +103,9 @@ router.delete("/delete/:id", (req, res) => {
       where: { b_id: Number(b_id) },
     })
     .then((result) => {
-      res.redirect("/api/bbsList");
+      // delete, put method는 redirect를 처음 요청된 method로 한다.
+      res.json(result);
+      // res.redirect("/api/bbsList");
     });
 });
 
