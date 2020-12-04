@@ -1,0 +1,10 @@
+table.book {
+  width: 80vw;
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+
+table.book td,
+table.book th {
+  border: 1px solid #ddd;
+}
